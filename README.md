@@ -1,9 +1,13 @@
 # Game_Server_Study
 
 # Mento : m-jacking75
-
-
-
+[게임서버 만들기](https://docs.google.com/presentation/d/14_gxv8RbwDW_zVhq7kk-FJ62_floC9kZx9E6OWt4mWU/edit?usp=sharing )    
+[게임서버 만들기 - 기초 학습](https://docs.google.com/presentation/d/1qT7rgZeZARd_-wBgCAQrUb6aT_evHjuEAxexhWOIYcU/edit?usp=sharing )  
+  
+  
+<br>  
+  
+    
 # curriculum
 
 1. 게임 서버 틀 만들기
