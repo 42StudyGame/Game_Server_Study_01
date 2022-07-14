@@ -48,5 +48,5 @@ private:
 	bool m_IsUsed = false;
 	std::vector<User*> m_UserList;
 
-	Game* m_pGame = nullptr;
+	//Game* m_pGame = nullptr;
 };

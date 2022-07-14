@@ -38,11 +38,6 @@ void RoomManager::SetNetwork(TcpNet* pNetwork, ILog* pLogger)
 	}
 }
 
-short RoomManager::GetUserCount()
-{ 
-	return static_cast<short>(m_UserIndexDic.size()); 
-}
-
 Room* RoomManager::GetRoom(const short roomIndex)
 {
 	if (roomIndex < 0 || roomIndex >= m_RoomList.size()) {

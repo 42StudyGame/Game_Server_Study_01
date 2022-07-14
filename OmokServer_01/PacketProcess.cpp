@@ -67,10 +67,8 @@ ERROR_CODE PacketProcess::NtfSysCloseSession(PacketInfo packetInfo)
 
 ERROR_CODE PacketProcess::Login(PacketInfo packetInfo)
 {
-	//TODO: 받은 데이터가 PktLogInReq 크기만큼인지 조사해야 한다.
 	// 패스워드는 무조건 pass 해준다.
 	// ID 중복이라면 에러 처리한다.
-
 	PktLogInRes resPkt;
 	auto reqPkt = (PktLogInReq*)packetInfo.pRefData;
 
