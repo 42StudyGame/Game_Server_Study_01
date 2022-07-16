@@ -101,14 +101,11 @@ ERROR_CODE Server::LoadConfig()
 	m_pServerConfig->MaxClientRecvBufferSize = 8192;
 	m_pServerConfig->MaxClientSendBufferSize = 8192;
 
-	m_pServerConfig->IsLoginCheck = false;
-
 	m_pServerConfig->ExtraClientCount = 64;
 	m_pServerConfig->MaxRoomCount = 20;
 	m_pServerConfig->MaxRoomUserCount = 4;
 	    
 	m_pLogger->Write(NServerNetLib::LOG_TYPE::L_INFO, "%s | Port(%d), Backlog(%d)", __FUNCTION__, m_pServerConfig->Port, m_pServerConfig->BackLogCount);
-	m_pLogger->Write(NServerNetLib::LOG_TYPE::L_INFO, "%s | IsLoginCheck(%d)", __FUNCTION__, m_pServerConfig->IsLoginCheck);
 	return ERROR_CODE::NONE;
 }
 		
