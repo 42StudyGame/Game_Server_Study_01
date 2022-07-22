@@ -45,10 +45,14 @@
   
 ```mermaid
 sequenceDiagram
-   Client->Server: PK_ENTER_ROOM_REQ
-   Server-->Client: PK_ENTER_ROOM_RES
-end
-```
+   participant c as Client
+   participant c_other as Client
+   participant s as Server
+  
+   c ->>+ s: PK_ENTER_ROOM_REQ
+   s -->+ c: PK_ENTER_ROOM_RES
+   s ->>+ c_other: PK_NEW_USER_ENTER_ROOM_NTF
+```  
     
     
 ## 2) 방 나가기 
@@ -56,7 +60,13 @@ end
 - 방에 있는 유저 수가 2 이상인 경우에 나가는 경우 아직 남아 있는 유저들에게 방을 나가가는 유저가 누구인지 알려준다
 - 클라이언트가 방에 있는 상태에서 프로그램을 종료하면 네트워크 접속이 끊어지고, 서버는 접속이 끊어진 유저가 방에 있는지 조사하 후 방에 있다면 방 나가기 처리를 한다.  
   
-  
+```mermaid
+sequenceDiagram
+   Client ->>+ Server: PK_LEAVE_ROOM_REQ
+   Server -->+ Client: PK_LEAVE_ROOM_RES
+```  
+    
+	
 ## 3) 방 채팅
 - 방에 있는 유저가 채팅 메시지를 보내면 방에 있는 모든 유저에게 브로드캐스트 한다.
    
