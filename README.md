@@ -45,14 +45,14 @@
   
 ```mermaid
 sequenceDiagram
-   participant c as Client
-   participant c_other as Client
-   participant s as Server
+   participant c as 요청 클라이언트 
+   participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant s as 서버
   
    c ->>+ s: PK_ENTER_ROOM_REQ
    s -->+ c: PK_ENTER_ROOM_RES
    s ->>+ c_other: PK_NEW_USER_ENTER_ROOM_NTF
-```  
+```   
     
     
 ## 2) 방 나가기 
@@ -62,15 +62,31 @@ sequenceDiagram
   
 ```mermaid
 sequenceDiagram
-   Client ->>+ Server: PK_LEAVE_ROOM_REQ
-   Server -->+ Client: PK_LEAVE_ROOM_RES
-```  
+   participant c as 요청 클라이언트 
+   participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant s as 서버
+  
+   c ->>+ s: PK_LEAVE_ROOM_REQ
+   s -->+ c: PK_LEAVE_ROOM_RES
+   s ->>+ c_other: PK_USER_LEAVE_ROOM_NTF
+```   
     
 	
 ## 3) 방 채팅
 - 방에 있는 유저가 채팅 메시지를 보내면 방에 있는 모든 유저에게 브로드캐스트 한다.
    
-   
+```mermaid
+sequenceDiagram
+   participant c as 요청 클라이언트 
+   participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant s as 서버
+  
+   c ->>+ s: PK_CHAT_ROOM_REQ
+   s -->+ c: PK_CHAT_ROOM_RES
+   s ->>+ c_other: PK_CHAT_ROOM_NTF
+```  
+  
+    
 ## 4) 게임 시작 요청
   
   
