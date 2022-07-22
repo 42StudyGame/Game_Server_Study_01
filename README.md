@@ -45,8 +45,8 @@
   
 ```mermaid
 sequenceDiagram
-   participant c as 요청 클라이언트 
    participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant c as 요청 클라이언트    
    participant s as 서버
   
    c ->>+ s: PK_ENTER_ROOM_REQ
