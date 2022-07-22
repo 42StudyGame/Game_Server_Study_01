@@ -38,7 +38,7 @@
 # 과제 
   
 ## 1) 방 입장
-- 클라이언트에서 요청 시에 방번호를 보낸다(방번호 데이터 타입은 int)
+- 클라이언트에서 요청 시에 방번호를 보낸다
 - 방번호가 0 이상이면 유저를 요청한 방에 입장시킨다
 - 방번호가 -1 이면 서버에서 빈 방을 골라서 입장시킨다.
 - 방에 이미 입장한 유저가 있는 경우 이미 있는 유저들에게 새로 들어온 유저의 정보를 보내준다.  
@@ -62,8 +62,8 @@ sequenceDiagram
   
 ```mermaid
 sequenceDiagram
-   participant c as 요청 클라이언트 
    participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant c as 요청 클라이언트    
    participant s as 서버
   
    c ->>+ s: PK_LEAVE_ROOM_REQ
@@ -77,8 +77,8 @@ sequenceDiagram
    
 ```mermaid
 sequenceDiagram
-   participant c as 요청 클라이언트 
    participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant c as 요청 클라이언트    
    participant s as 서버
   
    c ->>+ s: PK_CHAT_ROOM_REQ
