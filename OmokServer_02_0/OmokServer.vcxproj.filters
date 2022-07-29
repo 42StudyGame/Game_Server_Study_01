@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="NetLib\TcpNetwork.cpp">
+      <Filter>NetLib</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketProcess.cpp" />
+    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="UserManager.cpp" />
+    <ClCompile Include="RoomManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="NetLib">
+      <UniqueIdentifier>{8b6c55fb-71b0-4168-9c82-d38310f87e9c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NetLib\Define.h">
+      <Filter>NetLib</Filter>
+    </ClInclude>
+    <ClInclude Include="NetLib\ILog.h">
+      <Filter>NetLib</Filter>
+    </ClInclude>
+    <ClInclude Include="NetLib\ITcpNetwork.h">
+      <Filter>NetLib</Filter>
+    </ClInclude>
+    <ClInclude Include="NetLib\ServerNetErrorCode.h">
+      <Filter>NetLib</Filter>
+    </ClInclude>
+    <ClInclude Include="NetLib\TcpNetwork.h">
+      <Filter>NetLib</Filter>
+    </ClInclude>
+    <ClInclude Include="conmanip.h" />
+    <ClInclude Include="ConsoleLogger.h" />
+    <ClInclude Include="ErrorCode.h" />
+    <ClInclude Include="Packet.h" />
+    <ClInclude Include="PacketID.h" />
+    <ClInclude Include="PacketProcess.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="Server.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserManager.h" />
+    <ClInclude Include="RoomManager.h" />
+  </ItemGroup>
+</Project>
