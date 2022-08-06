@@ -96,6 +96,13 @@ namespace csharp_test_client
             responsePkt.FromBytes(bodyData);
 
             DevLog.Write($"방 나가기 결과:  {(ERROR_CODE)responsePkt.Result}");
+
+            RoomUserListClear();
+        }
+        void RoomUserListClear()
+        {
+            listBoxRoomUserList.Items.Clear();
+            listBoxRoomChatMsg.Items.Clear();
         }
 
         void PacketProcess_RoomLeaveUserNotify(byte[] bodyData)
@@ -106,6 +113,14 @@ namespace csharp_test_client
             RemoveRoomUserList(notifyPkt.UserUniqueId);
 
             DevLog.Write($"방에서 나간 유저 받음");
+
+            RoomUserDelete(notifyPkt.UserUniqueId, notifyPkt.UserID);
+        }
+
+        void RoomUserDelete(Int64 userUniqueId, string userID)
+        {
+            var msg = $"{userUniqueId}: {userID}";
+            listBoxRoomUserList.Items.Remove(msg);
         }
 
 

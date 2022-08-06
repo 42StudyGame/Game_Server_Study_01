@@ -219,11 +219,29 @@ namespace csharp_test_client
 
     public class RoomLeaveUserNtfPacket
     {
+        //public Int64 UserUniqueId;
+
+        //public bool FromBytes(byte[] bodyData)
+        //{
+        //    UserUniqueId = BitConverter.ToInt64(bodyData, 0);
+        //    return true;
+        //}
         public Int64 UserUniqueId;
+        public string UserID;
 
         public bool FromBytes(byte[] bodyData)
         {
-            UserUniqueId = BitConverter.ToInt64(bodyData, 0);
+            var readPos = 0;
+
+            UserUniqueId = BitConverter.ToInt64(bodyData, readPos);
+            readPos += 8;
+
+            var idlen = (SByte)bodyData[readPos];
+            ++readPos;
+
+            UserID = Encoding.UTF8.GetString(bodyData, readPos, idlen);
+            readPos += idlen;
+
             return true;
         }
     }
