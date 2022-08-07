@@ -88,17 +88,68 @@ sequenceDiagram
   
     
 ## 4) 게임 시작 요청
+- 방에 있는 유저가 게임 시작 요청을 ㅎ보내면 방에 있는 모든 유저에게 브로드캐스트 한다.  
   
+```mermaid
+sequenceDiagram
+   participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant c as 요청 클라이언트    
+   participant s as 서버
   
-## 5) 게임 시작 및 통보  
+   c ->>+ s: PK_READY_GAME_ROOM_REQ
+   s -->+ c: PK_READY_GAME_ROOM_RES
+   s ->>+ c_other: PK_READY_GAME_ROOM_NTF
+```    
+   
+## 5) 게임 시작 취소
+
+```mermaid
+sequenceDiagram
+   participant c_other as 요청 클라이언트 이외의 모든 클라이언트
+   participant c as 요청 클라이언트    
+   participant s as 서버
   
+   c ->>+ s: PK_CANCEL_READY_GAME_ROOM_REQ
+   s -->+ c: PK_CANCEL_READY_GAME_ROOM_RES
+   s ->>+ c_other: PK_CANCEL_READY_GAME_ROOM_NTF
+```    
+  
+
+## 5) 게임 시작 통보
+- 방의 게임을 할 유저가 모두 게임 시작 요청을 했다면 게임 시작을 알린다. 첫번째 턴 유저 정보도 담는다  
+  
+```mermaid
+sequenceDiagram
+   participant c_all as 방의 모든 클라이언트    
+   participant s as 서버
+  
+   s -->+ c_all: PK_START_GAME_ROOM_NTF   
+```      
   
 ## 6) 알 두기 
+- 턴을 가진 유저만 요청할 수 있다. NTF 패킷에서 다음 유저의 턴 정보를 알려준다   
   
+```mermaid
+sequenceDiagram
+   participant c_all as 방의 모든 클라이언트
+   participant c as 요청 클라이언트    
+   participant c_all as 서버
+  
+   c ->>+ s: PK_PUT_AL_GAME_ROOM_REQ
+   s -->+ c: PK_PUT_AL_GAME_ROOM_RES
+   s ->>+ c_all: PK_PUT_AL_GAME_ROOM_NTF
+```    
   
 ## 게임 종료 체크    
+- 위의 알 두기 이후 오목 체크를 한 후 게임이 종료 되면 알린다   
+
+```mermaid
+sequenceDiagram
+   participant c_all as 방의 모든 클라이언트    
+   participant s as 서버
   
-  
+   s -->+ c_all: PK_END_GAME_ROOM_NTF   
+```        
   
   
   
