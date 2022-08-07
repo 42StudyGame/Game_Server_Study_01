@@ -68,6 +68,16 @@ void Room::NotifyEnterUserInfo(const int excludedUserIndex, const char* pszUserI
 	SendToAllUser((short)PACKET_ID::PK_NEW_USER_ENTER_ROOM_NTF, sizeof(pkt), (char*)&pkt, excludedUserIndex);
 }
 
+void Room::LeaveUserForAbnormal(const short userIndex, const char* pszUserID)
+{
+	if (LeaveUser(userIndex) != ERROR_CODE::NONE) 
+	{
+		return;
+	}
+
+	NotifyLeaveUserInfo(pszUserID);
+}
+
 ERROR_CODE Room::LeaveUser(const short userIndex)
 {
 	if (m_IsUsed == false) {

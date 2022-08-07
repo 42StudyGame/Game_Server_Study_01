@@ -44,6 +44,7 @@ public:
 
 	ERROR_CODE LeaveUser(const short userIndex);
 	void NotifyLeaveUserInfo(const char* pszUserID);
+	void LeaveUserForAbnormal(const short userIndex, const char* pszUserID);
 
 	void NotifyChat(const int excludedUserIndex, const char* pszUserID, const char* pszMsg);
 

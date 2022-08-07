@@ -68,7 +68,16 @@ ERROR_CODE PacketProcess::NtfSysCloseSession(PacketInfo packetInfo)
 {
 	auto pUser = std::get<1>(m_pRefUserMgr->GetUser(packetInfo.SessionIndex));
 
-	if (pUser) {		
+	if (pUser->IsCurDomainInRoom())
+	{
+		if (auto pRoom = m_pRefRoomMgr->GetRoom(pUser->GetRoomIndex()); pRoom != nullptr)
+		{
+			pRoom->LeaveUserForAbnormal(pUser->GetIndex(), pUser->GetID().c_str());
+		}
+	}
+
+	if (pUser) 
+	{		
 		m_pRefUserMgr->RemoveUser(packetInfo.SessionIndex);		
 	}
 			
